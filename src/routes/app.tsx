@@ -60,7 +60,6 @@ function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-white/5 space-y-1">
-        <NavItem to="/app/settings" label="Settings" icon={Settings} />
         <a
           href="/"
           className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-white/60 hover:bg-white/5 hover:text-white transition"
