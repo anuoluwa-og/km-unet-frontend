@@ -202,7 +202,6 @@ function UploadPage() {
 
             <Link
               to="/app/analyze"
-              disabled={!ready}
               aria-disabled={!ready}
               onClick={(e) => {
                 if (!ready) e.preventDefault();
@@ -211,7 +210,7 @@ function UploadPage() {
                 "mt-8 w-full inline-flex items-center justify-center gap-2 rounded-full font-medium px-6 py-3.5 transition " +
                 (ready
                   ? "bg-[var(--cyan)] text-[oklch(0.15_0.05_220)] hover:shadow-glow"
-                  : "bg-muted text-muted-foreground cursor-not-allowed")
+                  : "bg-muted text-muted-foreground cursor-not-allowed pointer-events-none")
               }
             >
               <UploadIcon className="size-4" />
