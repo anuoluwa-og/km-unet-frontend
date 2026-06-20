@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppUploadRouteImport } from './routes/app.upload'
 import { Route as AppResultsRouteImport } from './routes/app.results'
+import { Route as AppHistoryRouteImport } from './routes/app.history'
 import { Route as AppAnalyzeRouteImport } from './routes/app.analyze'
 
 const AppRoute = AppRouteImport.update({
@@ -35,6 +36,11 @@ const AppResultsRoute = AppResultsRouteImport.update({
   path: '/results',
   getParentRoute: () => AppRoute,
 } as any)
+const AppHistoryRoute = AppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAnalyzeRoute = AppAnalyzeRouteImport.update({
   id: '/analyze',
   path: '/analyze',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/analyze': typeof AppAnalyzeRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/results': typeof AppResultsRoute
   '/app/upload': typeof AppUploadRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/analyze': typeof AppAnalyzeRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/results': typeof AppResultsRoute
   '/app/upload': typeof AppUploadRoute
 }
@@ -60,19 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/analyze': typeof AppAnalyzeRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/results': typeof AppResultsRoute
   '/app/upload': typeof AppUploadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/analyze' | '/app/results' | '/app/upload'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/analyze'
+    | '/app/history'
+    | '/app/results'
+    | '/app/upload'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/app/analyze' | '/app/results' | '/app/upload'
+  to:
+    | '/'
+    | '/app'
+    | '/app/analyze'
+    | '/app/history'
+    | '/app/results'
+    | '/app/upload'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/app/analyze'
+    | '/app/history'
     | '/app/results'
     | '/app/upload'
   fileRoutesById: FileRoutesById
@@ -112,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppResultsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/history': {
+      id: '/app/history'
+      path: '/history'
+      fullPath: '/app/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/analyze': {
       id: '/app/analyze'
       path: '/analyze'
@@ -124,12 +153,14 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAnalyzeRoute: typeof AppAnalyzeRoute
+  AppHistoryRoute: typeof AppHistoryRoute
   AppResultsRoute: typeof AppResultsRoute
   AppUploadRoute: typeof AppUploadRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyzeRoute: AppAnalyzeRoute,
+  AppHistoryRoute: AppHistoryRoute,
   AppResultsRoute: AppResultsRoute,
   AppUploadRoute: AppUploadRoute,
 }
