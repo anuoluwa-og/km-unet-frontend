@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Upload,
   ScanLine,
@@ -60,12 +60,12 @@ function Nav() {
           <a href="#audience" className="hover:text-foreground transition">For clinicians</a>
           <a href="#impact" className="hover:text-foreground transition">Impact</a>
         </nav>
-        <a
-          href="#cta"
+        <Link
+          to="/app/upload"
           className="inline-flex items-center gap-1.5 rounded-full bg-foreground text-background text-sm font-medium px-4 py-2 hover:opacity-90 transition"
         >
-          Request demo <ArrowRight className="size-3.5" />
-        </a>
+          Open workspace <ArrowRight className="size-3.5" />
+        </Link>
       </div>
     </header>
   );
@@ -101,12 +101,12 @@ function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href="#cta"
+          <Link
+            to="/app/upload"
             className="inline-flex items-center gap-2 rounded-full bg-[var(--cyan)] text-[oklch(0.15_0.05_220)] font-medium px-6 py-3.5 hover:shadow-glow transition"
           >
             <Upload className="size-4" /> Upload a scan
-          </a>
+          </Link>
           <a
             href="#pipeline"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-white/90 hover:bg-white/5 transition"
