@@ -5,7 +5,6 @@ import {
   Activity,
   FileText,
   History,
-  Settings,
   HelpCircle,
   ArrowLeft,
 } from "lucide-react";
