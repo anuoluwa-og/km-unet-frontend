@@ -60,12 +60,12 @@ function Nav() {
           <a href="#audience" className="hover:text-foreground transition">For clinicians</a>
           <a href="#impact" className="hover:text-foreground transition">Impact</a>
         </nav>
-        <a
-          href="#cta"
+        <Link
+          to="/app/upload"
           className="inline-flex items-center gap-1.5 rounded-full bg-foreground text-background text-sm font-medium px-4 py-2 hover:opacity-90 transition"
         >
-          Request demo <ArrowRight className="size-3.5" />
-        </a>
+          Open workspace <ArrowRight className="size-3.5" />
+        </Link>
       </div>
     </header>
   );
